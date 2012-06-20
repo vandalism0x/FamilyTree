@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Model1StoreContainer" CdmEntityContainer="Model1Container">
+    <EntitySetMapping Name="Events">
+      <EntityTypeMapping TypeName="Model1.Event">
+        <MappingFragment StoreEntitySet="Events">
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Place" ColumnName="Place" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="EventType_Id" ColumnName="EventType_Id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EventTypes">
+      <EntityTypeMapping TypeName="Model1.EventTypes">
+        <MappingFragment StoreEntitySet="EventTypes">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Materials">
+      <EntityTypeMapping TypeName="Model1.Material">
+        <MappingFragment StoreEntitySet="Materials">
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="Data" ColumnName="Data" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="MaterialType_Id" ColumnName="MaterialType_Id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MaterialTypes">
+      <EntityTypeMapping TypeName="Model1.MaterialType">
+        <MappingFragment StoreEntitySet="MaterialTypes">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Persons">
+      <EntityTypeMapping TypeName="Model1.Person">
+        <MappingFragment StoreEntitySet="Persons">
+          <ScalarProperty Name="Mother_Id" ColumnName="Mother_Id" />
+          <ScalarProperty Name="Father_Id" ColumnName="Father_Id" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="FinancialPosition" ColumnName="FinancialPosition" />
+          <ScalarProperty Name="Rewards" ColumnName="Rewards" />
+          <ScalarProperty Name="Rank" ColumnName="Rank" />
+          <ScalarProperty Name="Education" ColumnName="Education" />
+          <ScalarProperty Name="PoliticalViews" ColumnName="PoliticalViews" />
+          <ScalarProperty Name="Religion" ColumnName="Religion" />
+          <ScalarProperty Name="MentalHealth" ColumnName="MentalHealth" />
+          <ScalarProperty Name="CauseOfDeath" ColumnName="CauseOfDeath" />
+          <ScalarProperty Name="Physique" ColumnName="Physique" />
+          <ScalarProperty Name="Nationality" ColumnName="Nationality" />
+          <ScalarProperty Name="PlaceOfDeath" ColumnName="PlaceOfDeath" />
+          <ScalarProperty Name="DeathDate" ColumnName="DeathDate" />
+          <ScalarProperty Name="PlaceOfBirth" ColumnName="PlaceOfBirth" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Projects">
+      <EntityTypeMapping TypeName="Model1.Project">
+        <MappingFragment StoreEntitySet="Projects">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="Model1.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="EventPersons" TypeName="Model1.EventPersons" StoreEntitySet="EventPersons">
+      <EndProperty Name="Persons">
+        <ScalarProperty Name="Id" ColumnName="Person_Id" />
+      </EndProperty>
+      <EndProperty Name="Events">
+        <ScalarProperty Name="Id" ColumnName="Event_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="MaterialPersons" TypeName="Model1.MaterialPersons" StoreEntitySet="MaterialPersons">
+      <EndProperty Name="Persons">
+        <ScalarProperty Name="Id" ColumnName="Person_Id" />
+      </EndProperty>
+      <EndProperty Name="Materials">
+        <ScalarProperty Name="Id" ColumnName="Material_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ProjectPersons" TypeName="Model1.ProjectPersons" StoreEntitySet="ProjectPersons">
+      <EndProperty Name="Projects">
+        <ScalarProperty Name="Id" ColumnName="Project_Id" />
+      </EndProperty>
+      <EndProperty Name="Persons">
+        <ScalarProperty Name="Id" ColumnName="Person_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

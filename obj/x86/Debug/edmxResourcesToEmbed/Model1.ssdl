@@ -1,0 +1,245 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model1.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="Model1StoreContainer">
+    <EntitySet Name="EventPersons" EntityType="Model1.Store.EventPersons" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Events" EntityType="Model1.Store.Events" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="EventTypes" EntityType="Model1.Store.EventTypes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MaterialPersons" EntityType="Model1.Store.MaterialPersons" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Materials" EntityType="Model1.Store.Materials" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MaterialTypes" EntityType="Model1.Store.MaterialTypes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Persons" EntityType="Model1.Store.Persons" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProjectPersons" EntityType="Model1.Store.ProjectPersons" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Projects" EntityType="Model1.Store.Projects" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="sysdiagrams" EntityType="Model1.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_EventPersons_Events" Association="Model1.Store.FK_EventPersons_Events">
+      <End Role="Events" EntitySet="Events" />
+      <End Role="EventPersons" EntitySet="EventPersons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EventPersons_Persons" Association="Model1.Store.FK_EventPersons_Persons">
+      <End Role="Persons" EntitySet="Persons" />
+      <End Role="EventPersons" EntitySet="EventPersons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Events_EventTypes" Association="Model1.Store.FK_Events_EventTypes">
+      <End Role="EventTypes" EntitySet="EventTypes" />
+      <End Role="Events" EntitySet="Events" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MaterialPersons_Materials" Association="Model1.Store.FK_MaterialPersons_Materials">
+      <End Role="Materials" EntitySet="Materials" />
+      <End Role="MaterialPersons" EntitySet="MaterialPersons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MaterialPersons_Persons" Association="Model1.Store.FK_MaterialPersons_Persons">
+      <End Role="Persons" EntitySet="Persons" />
+      <End Role="MaterialPersons" EntitySet="MaterialPersons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Materials_MaterialTypes" Association="Model1.Store.FK_Materials_MaterialTypes">
+      <End Role="MaterialTypes" EntitySet="MaterialTypes" />
+      <End Role="Materials" EntitySet="Materials" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectPersons_Persons" Association="Model1.Store.FK_ProjectPersons_Persons">
+      <End Role="Persons" EntitySet="Persons" />
+      <End Role="ProjectPersons" EntitySet="ProjectPersons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectPersons_ProjectList" Association="Model1.Store.FK_ProjectPersons_ProjectList">
+      <End Role="Projects" EntitySet="Projects" />
+      <End Role="ProjectPersons" EntitySet="ProjectPersons" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="EventPersons">
+    <Key>
+      <PropertyRef Name="Event_Id" />
+      <PropertyRef Name="Person_Id" />
+    </Key>
+    <Property Name="Event_Id" Type="int" Nullable="false" />
+    <Property Name="Person_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Events">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="EventType_Id" Type="int" Nullable="false" />
+    <Property Name="Date" Type="nvarchar(max)" />
+    <Property Name="Place" Type="nvarchar(max)" />
+    <Property Name="Description" Type="text" />
+  </EntityType>
+  <EntityType Name="EventTypes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MaterialPersons">
+    <Key>
+      <PropertyRef Name="Material_Id" />
+      <PropertyRef Name="Person_Id" />
+    </Key>
+    <Property Name="Material_Id" Type="int" Nullable="false" />
+    <Property Name="Person_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Materials">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="MaterialType_Id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Description" Type="text" />
+    <Property Name="Data" Type="varbinary(max)" />
+    <Property Name="FileName" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="MaterialTypes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Persons">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Surname" Type="nvarchar(max)" />
+    <Property Name="Name" Type="nvarchar(max)" />
+    <Property Name="Patronymic" Type="nvarchar(max)" />
+    <Property Name="BirthDate" Type="nvarchar(max)" />
+    <Property Name="PlaceOfBirth" Type="nvarchar(max)" />
+    <Property Name="DeathDate" Type="nvarchar(max)" />
+    <Property Name="PlaceOfDeath" Type="nvarchar(max)" />
+    <Property Name="Nationality" Type="nvarchar(max)" />
+    <Property Name="Physique" Type="nvarchar(max)" />
+    <Property Name="CauseOfDeath" Type="nvarchar(max)" />
+    <Property Name="MentalHealth" Type="nvarchar(max)" />
+    <Property Name="Religion" Type="nvarchar(max)" />
+    <Property Name="PoliticalViews" Type="nvarchar(max)" />
+    <Property Name="Education" Type="nvarchar(max)" />
+    <Property Name="Rank" Type="nvarchar(max)" />
+    <Property Name="Rewards" Type="nvarchar(max)" />
+    <Property Name="FinancialPosition" Type="nvarchar(max)" />
+    <Property Name="Gender" Type="int" />
+    <Property Name="Father_Id" Type="int" />
+    <Property Name="Mother_Id" Type="int" />
+  </EntityType>
+  <EntityType Name="ProjectPersons">
+    <Key>
+      <PropertyRef Name="Project_Id" />
+      <PropertyRef Name="Person_Id" />
+    </Key>
+    <Property Name="Project_Id" Type="int" Nullable="false" />
+    <Property Name="Person_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Projects">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_EventPersons_Events">
+    <End Role="Events" Type="Model1.Store.Events" Multiplicity="1" />
+    <End Role="EventPersons" Type="Model1.Store.EventPersons" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Events">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EventPersons">
+        <PropertyRef Name="Event_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EventPersons_Persons">
+    <End Role="Persons" Type="Model1.Store.Persons" Multiplicity="1" />
+    <End Role="EventPersons" Type="Model1.Store.EventPersons" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persons">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EventPersons">
+        <PropertyRef Name="Person_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Events_EventTypes">
+    <End Role="EventTypes" Type="Model1.Store.EventTypes" Multiplicity="1" />
+    <End Role="Events" Type="Model1.Store.Events" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EventTypes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Events">
+        <PropertyRef Name="EventType_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MaterialPersons_Materials">
+    <End Role="Materials" Type="Model1.Store.Materials" Multiplicity="1" />
+    <End Role="MaterialPersons" Type="Model1.Store.MaterialPersons" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Materials">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MaterialPersons">
+        <PropertyRef Name="Material_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MaterialPersons_Persons">
+    <End Role="Persons" Type="Model1.Store.Persons" Multiplicity="1" />
+    <End Role="MaterialPersons" Type="Model1.Store.MaterialPersons" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persons">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MaterialPersons">
+        <PropertyRef Name="Person_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Materials_MaterialTypes">
+    <End Role="MaterialTypes" Type="Model1.Store.MaterialTypes" Multiplicity="1" />
+    <End Role="Materials" Type="Model1.Store.Materials" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MaterialTypes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Materials">
+        <PropertyRef Name="MaterialType_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectPersons_Persons">
+    <End Role="Persons" Type="Model1.Store.Persons" Multiplicity="1" />
+    <End Role="ProjectPersons" Type="Model1.Store.ProjectPersons" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persons">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProjectPersons">
+        <PropertyRef Name="Person_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectPersons_ProjectList">
+    <End Role="Projects" Type="Model1.Store.Projects" Multiplicity="1" />
+    <End Role="ProjectPersons" Type="Model1.Store.ProjectPersons" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Projects">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProjectPersons">
+        <PropertyRef Name="Project_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

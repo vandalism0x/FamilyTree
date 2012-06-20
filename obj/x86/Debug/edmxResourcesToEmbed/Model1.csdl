@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model1" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+  <EntityContainer Name="Model1Container" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Events" EntityType="Model1.Event" />
+    <EntitySet Name="EventTypes" EntityType="Model1.EventTypes" />
+    <EntitySet Name="Materials" EntityType="Model1.Material" />
+    <EntitySet Name="MaterialTypes" EntityType="Model1.MaterialType" />
+    <EntitySet Name="Persons" EntityType="Model1.Person" />
+    <EntitySet Name="Projects" EntityType="Model1.Project" />
+    <EntitySet Name="sysdiagrams" EntityType="Model1.sysdiagrams" />
+    <AssociationSet Name="FK_Events_EventTypes" Association="Model1.FK_Events_EventTypes">
+      <End Role="EventTypes" EntitySet="EventTypes" />
+      <End Role="Events" EntitySet="Events" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Materials_MaterialTypes" Association="Model1.FK_Materials_MaterialTypes">
+      <End Role="MaterialTypes" EntitySet="MaterialTypes" />
+      <End Role="Materials" EntitySet="Materials" />
+    </AssociationSet>
+    <AssociationSet Name="EventPersons" Association="Model1.EventPersons">
+      <End Role="Events" EntitySet="Events" />
+      <End Role="Persons" EntitySet="Persons" />
+    </AssociationSet>
+    <AssociationSet Name="MaterialPersons" Association="Model1.MaterialPersons">
+      <End Role="Materials" EntitySet="Materials" />
+      <End Role="Persons" EntitySet="Persons" />
+    </AssociationSet>
+    <AssociationSet Name="ProjectPersons" Association="Model1.ProjectPersons">
+      <End Role="Persons" EntitySet="Persons" />
+      <End Role="Projects" EntitySet="Projects" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Event">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="Int32" Name="EventType_Id" Nullable="false" />
+    <Property Type="String" Name="Date" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Place" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="EventTypes" Relationship="Model1.FK_Events_EventTypes" FromRole="Events" ToRole="EventTypes" />
+    <NavigationProperty Name="Persons" Relationship="Model1.EventPersons" FromRole="Events" ToRole="Persons" />
+  </EntityType>
+  <EntityType Name="EventTypes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Events" Relationship="Model1.FK_Events_EventTypes" FromRole="EventTypes" ToRole="Events" />
+  </EntityType>
+  <EntityType Name="Material">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="MaterialType_Id" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="Binary" Name="Data" MaxLength="Max" FixedLength="false" />
+    <Property Type="String" Name="FileName" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="MaterialTypes" Relationship="Model1.FK_Materials_MaterialTypes" FromRole="Materials" ToRole="MaterialTypes" />
+    <NavigationProperty Name="Persons" Relationship="Model1.MaterialPersons" FromRole="Materials" ToRole="Persons" />
+  </EntityType>
+  <EntityType Name="MaterialType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Materials" Relationship="Model1.FK_Materials_MaterialTypes" FromRole="MaterialTypes" ToRole="Materials" />
+  </EntityType>
+  <EntityType Name="Person">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Surname" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Name" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Patronymic" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="BirthDate" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PlaceOfBirth" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="DeathDate" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PlaceOfDeath" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Nationality" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Physique" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="CauseOfDeath" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="MentalHealth" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Religion" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PoliticalViews" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Education" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Rank" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Rewards" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="FinancialPosition" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="Gender" />
+    <Property Type="Int32" Name="Father_Id" />
+    <Property Type="Int32" Name="Mother_Id" />
+    <NavigationProperty Name="Events" Relationship="Model1.EventPersons" FromRole="Persons" ToRole="Events" />
+    <NavigationProperty Name="Materials" Relationship="Model1.MaterialPersons" FromRole="Persons" ToRole="Materials" />
+    <NavigationProperty Name="Projects" Relationship="Model1.ProjectPersons" FromRole="Persons" ToRole="Projects" />
+  </EntityType>
+  <EntityType Name="Project">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Persons" Relationship="Model1.ProjectPersons" FromRole="Projects" ToRole="Persons" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Type="String" Name="name" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="principal_id" Nullable="false" />
+    <Property Type="Int32" Name="diagram_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="version" />
+    <Property Type="Binary" Name="definition" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_Events_EventTypes">
+    <End Type="Model1.EventTypes" Role="EventTypes" Multiplicity="1" />
+    <End Type="Model1.Event" Role="Events" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EventTypes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Events">
+        <PropertyRef Name="EventType_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Materials_MaterialTypes">
+    <End Type="Model1.MaterialType" Role="MaterialTypes" Multiplicity="1" />
+    <End Type="Model1.Material" Role="Materials" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MaterialTypes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Materials">
+        <PropertyRef Name="MaterialType_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EventPersons">
+    <End Type="Model1.Event" Role="Events" Multiplicity="*" />
+    <End Type="Model1.Person" Role="Persons" Multiplicity="*" />
+  </Association>
+  <Association Name="MaterialPersons">
+    <End Type="Model1.Material" Role="Materials" Multiplicity="*" />
+    <End Type="Model1.Person" Role="Persons" Multiplicity="*" />
+  </Association>
+  <Association Name="ProjectPersons">
+    <End Type="Model1.Person" Role="Persons" Multiplicity="*" />
+    <End Type="Model1.Project" Role="Projects" Multiplicity="*" />
+  </Association>
+</Schema>
