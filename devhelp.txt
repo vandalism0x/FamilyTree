@@ -1,0 +1,24 @@
+
+// 0. Таблица карточек | Persons | 
+// 1. Таблица связей | Relations | [Person1_Id,Person2_Id,Relation_Id] цель1, цель2, вид_связи
+// 2. Таблица событий | Events | [Id, PersonId, Person1Id, EventId]
+// 3. Таблица перечеслений существующих связей | RelationsEnumeration - [Id,Name] | отец, мать, супруг, етс.
+// 4. Таблица перечеслений существующих событий | EventsEnumeration - [Id, Name] | 
+
+// Класс Project / содержит List<Person>, List<Material>, List<Event>(??)
+
+Запуск программы:
+1. Инициализация нового Project
+2. Через таблицу ProjectPersons в Project заполняется Persons
+3. Через Persons заполняется раздел Materials
+4. Через Persons заполняется раздел Events
+
+
+MaterialTypes
+Id	Name
+1	CardPhoto
+2	Photo
+3	Audio
+4	Video
+5	Text
+

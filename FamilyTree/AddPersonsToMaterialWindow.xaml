@@ -1,0 +1,12 @@
+﻿<Window x:Class="FamilyTree.AddPersonsToMaterialWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="AddPersonsToMaterial" Height="300" Width="600" Loaded="Window_Loaded" ResizeMode="NoResize">
+    <Grid>
+        <Button Content="Сохранить" Height="23" HorizontalAlignment="Right" Name="addPersonsButton" VerticalAlignment="Bottom" Width="75" Margin="0,0,12,12" Click="addPersonsButton_Click" />
+        <ListView HorizontalAlignment="Stretch" Name="deselectedPersonsListBox" VerticalAlignment="Stretch" Margin="12,12,316,41" SelectionMode="Single" />
+        <ListView HorizontalAlignment="Stretch" Name="selectedPersonsListBox" VerticalAlignment="Stretch" Margin="316,12,12,41" SelectionMode="Single"/>
+        <Button Content="&gt;&gt;" Height="23" HorizontalAlignment="Stretch" Name="selectPersonButton" VerticalAlignment="Center" Width="33" Margin="274,90,274,148" Click="selectPersonButton_Click" />
+        <Button Content="&lt;&lt;" Height="23" HorizontalAlignment="Stretch" Name="deselectPersonButton" VerticalAlignment="Center" Width="33" Click="deselectPersonButton_Click" />
+    </Grid>
+</Window>
